@@ -1,4 +1,8 @@
 Award = Struct.new(:name, :expires_in, :quality) do
+  def blue_distinction_plus
+    self
+  end 
+
   def normal_item
       if self.expires_in > 1 && self.quality > 0
           self.quality -= 1
