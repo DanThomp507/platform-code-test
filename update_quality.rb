@@ -2,7 +2,7 @@ require 'award'
 
 def update_quality(awards)
   awards.each do |award|
-    return award if award.name == "Blue Distinction Plus"
+    return award if award.name == 'Blue Distinction Plus'
     handle_awards(award)
     end
 end
