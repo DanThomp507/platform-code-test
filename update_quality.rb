@@ -17,4 +17,7 @@ def update_quality(awards)
   end
 end
 
-# TODO: write handle methods for complete refactoring
+# quality is at 80 and never alters
+def handle_blue_distinction_plus(award)
+  award.quality = 80
+end 
