@@ -1,13 +1,12 @@
 require 'rspec'
 require 'update_quality'
-require 'award'
 
 describe '#update_quality' do
 
   context 'Given a single award' do
     let(:initial_expires_in) { 5 }
     let(:initial_quality) { 10 }
-    let(:award) {}
+    let(:award) { Award.new(name, initial_expires_in, initial_quality) }
 
     context 'when quality is updated' do
       before do
@@ -15,7 +14,7 @@ describe '#update_quality' do
       end
 
       context 'given a normal award' do
-        let(:award) { Award.new(initial_expires_in, initial_quality) }
+        let(:name) { 'NORMAL ITEM' }
 
         before do
           # Verify that this is always true in the current context
@@ -43,7 +42,7 @@ describe '#update_quality' do
       end
 
       context 'given Blue First' do
-        let(:award) { BlueFirst.new(initial_expires_in, initial_quality) }
+        let(:name) { 'Blue First' }
 
         before do
           # Verify that this is always true in the current context
@@ -87,7 +86,7 @@ describe '#update_quality' do
 
       context 'given Blue Distinction Plus' do
         let(:initial_quality) { 80 }
-        let(:award) { BlueDistinctionPlus.new(initial_expires_in, initial_quality) }
+        let(:name) { 'Blue Distinction Plus' }
 
         before do
           # Verify that this is always true in the current context
@@ -110,7 +109,7 @@ describe '#update_quality' do
       end
 
       context 'given Blue Compare' do
-        let(:award) {BlueCompare.new(initial_expires_in, initial_quality) }
+        let(:name) { 'Blue Compare' }
 
         before do
           # Verify that this is always true in the current context
@@ -179,7 +178,7 @@ describe '#update_quality' do
 
       context 'given a Blue Star award' do
         # before { pending }
-        let(:award) {BlueStar.new(initial_expires_in, initial_quality) }
+        let(:name) { 'Blue Star' }
         before { award.expires_in.should == initial_expires_in-1 }
 
         context 'before the expiration date' do
@@ -218,8 +217,8 @@ describe '#update_quality' do
   context 'Given several award' do
     let(:awards) {
       [
-        Award.new(5, 10),
-        BlueFirst.new(3, 10),
+        Award.new('NORMAL ITEM', 5, 10),
+        Award.new('Blue First', 3, 10),
       ]
     }
 
