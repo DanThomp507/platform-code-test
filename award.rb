@@ -10,7 +10,6 @@ Award = Struct.new(:name, :expires_in, :quality) do
           self.quality -= 2
       end
       self.expires_in -=1
-      self
   end
 
   def blue_first
@@ -21,7 +20,6 @@ Award = Struct.new(:name, :expires_in, :quality) do
       end
       self.quality = 50 if self.quality > 50
       self.expires_in -=1
-      self
   end
 
   def blue_compare
@@ -35,14 +33,12 @@ Award = Struct.new(:name, :expires_in, :quality) do
       self.quality = 50 if self.quality > 50
       self.quality = 0 if self.expires_in <= 0
       self.expires_in -= 1
-      self
   end
 
   def blue_star
       self.expires_in > 1 ? self.quality -= 2 : self.quality -= 4
       self.quality = 0 if self.quality < 0
       self.expires_in -= 1
-      self
   end
 
 end 

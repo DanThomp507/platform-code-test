@@ -1,7 +1,9 @@
 require 'award'
+require 'pp'
 
 def update_quality(awards)
   awards.each do |award|
+   pp(award)
     handle_awards(award)
     end
 end
